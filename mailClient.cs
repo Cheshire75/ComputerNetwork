@@ -11,10 +11,10 @@ class mailClient
 
     static void Main()
     {
-        string smtpId = "0603alswo"; // SMTP ID
-        string password = "0603@alswo"; // 비밀번호
-        string senderEmail = "0603alswo@naver.com"; // 발신자 이메일
-        string recipient = "0603alswo@gmail.com"; // 수신자 이메일
+        string smtpId = "smtpID"; // NAVER ID
+        string password = "password"; // NAVER 비밀번호
+        string senderEmail = "example@naver.com"; // 발신자 이메일
+        string recipient = "example@gmail.com"; // 수신자 이메일
         string subject = "Test Email"; // 이메일 제목
         string body = "Hello, this is a test email from C# using Naver SMTP."; // 이메일 본문
 
