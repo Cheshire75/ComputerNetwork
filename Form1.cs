@@ -13,8 +13,6 @@ namespace NetworkSocketProgramming
 {
     public partial class Form1 : Form
     {
-        public string ID;
-        public string PW;
         public Form1()
         {
             InitializeComponent();
