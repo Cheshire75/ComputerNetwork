@@ -1,7 +1,6 @@
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.Container;
+import java.io.File;
+
 import javax.swing.*;
 
 public class UI extends JFrame{
@@ -11,7 +10,7 @@ public class UI extends JFrame{
 	{
 		setTitle("메일 전송 프로그램");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(510,400);
+		setSize(510,420);
 		
 		Container contentPane = getContentPane();
 		contentPane.setLayout(null);
@@ -62,12 +61,33 @@ public class UI extends JFrame{
 		contentPane.add(scrollPane);
 		
 		JButton sendButton = new JButton("메일 전송");
-		sendButton.setBounds(380,330,100,20);
+		sendButton.setBounds(380,355,100,20);
 		contentPane.add(sendButton);
 		
 		JButton clearButton = new JButton("양식 비우기");
-		clearButton.setBounds(270, 330, 100, 20);
+		clearButton.setBounds(270, 355, 100, 20);
 		contentPane.add(clearButton);
+		
+		JButton selectFile = new JButton("파일 첨부");
+		selectFile.setBounds(80, 330, 100, 20);
+		contentPane.add(selectFile);
+		
+		JLabel fileDir = new JLabel("");
+		fileDir.setBounds(190, 330, 290, 20);
+		contentPane.add(fileDir);
+		
+		final File[] file = new File[1];
+		
+		selectFile.addActionListener(e->{
+			JFileChooser fileChooser = new JFileChooser();
+			int result = fileChooser.showOpenDialog(this);
+			
+			if(result == JFileChooser.APPROVE_OPTION)
+			{
+				file[0] = fileChooser.getSelectedFile();
+				fileDir.setText(file[0].getAbsolutePath());
+			}
+		});
 		
 		setVisible(true);
 		
@@ -94,7 +114,7 @@ public class UI extends JFrame{
 			
 			MailClient client = new MailClient(host);
 			try {
-				client.sendEmail(sender, password, rcpt, subject, body);
+				client.sendEmail(sender, password, rcpt, subject, body, file[0]);
 				JOptionPane.showMessageDialog(null, "메일이 성공적으로 전송되었습니다.","Info",JOptionPane.INFORMATION_MESSAGE);
 			}
 			catch(Exception error) {
