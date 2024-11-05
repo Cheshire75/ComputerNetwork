@@ -132,7 +132,7 @@ public class EmailWithAttachment {
 
     public static void main(String[] args) {
         String smtpId = "hjzang06"; // NAVER ID
-        String password = "hjhj06191919"; // NAVER 비밀번호
+        String password = ""; // NAVER 비밀번호
         String senderEmail = "hjzang06@naver.com"; // 발신자 이메일
         String recipients = "hjzang06@gmail.com, 01081089397a@gmail.com"; // 수신자 이메일 목록
         String subject = "Test Email with Attachment"; // 이메일 제목
